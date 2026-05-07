@@ -6,10 +6,17 @@ export const metadata = {
   title: "NexEdge AI — Intelligent Future Solutions",
   description: "Deep dives into artificial intelligence, global tech trends, and the tools shaping tomorrow.",
   keywords: "AI, artificial intelligence, technology, machine learning, blog",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "NexEdge AI",
     description: "Intelligent Future Solutions — AI & Tech Blog",
     type: "website",
+    images: [{ url: "/icon.png" }],
   },
 };
 
