@@ -1,4 +1,5 @@
-import Logo from "./Logo/page.jsx";
+import Logo       from "./Logo/page.jsx";
+import NavActions from "./client/NavActions/page.jsx";
 
 export default function Navbar() {
   return (
@@ -17,25 +18,24 @@ export default function Navbar() {
           <Logo />
         </a>
 
-        <nav className="flex items-center gap-1">
-          <a href="/"
-            style={{ color: "var(--text-secondary)" }}
-            className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-all duration-200 hover:text-white">
-            Home
-          </a>
-          <a href="/blog"
-            style={{ color: "var(--text-secondary)" }}
-            className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-all duration-200 hover:text-white">
-            Articles
-          </a>
-          <a href="/admin"
-            className="btn-glow ml-3 px-5 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-              <path d="M6.5 1v11M1 6.5h11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            Write
-          </a>
-        </nav>
+        <div className="flex items-center gap-1">
+          {/* Nav links */}
+          <nav className="hidden sm:flex items-center gap-1 mr-2">
+            <a href="/"
+               style={{ color: "var(--text-secondary)" }}
+               className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-all duration-200 hover:text-white">
+              Home
+            </a>
+            <a href="/blog"
+               style={{ color: "var(--text-secondary)" }}
+               className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-all duration-200 hover:text-white">
+              Articles
+            </a>
+          </nav>
+
+          {/* Auth actions — client component */}
+          <NavActions />
+        </div>
 
       </div>
     </header>

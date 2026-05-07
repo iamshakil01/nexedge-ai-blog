@@ -25,6 +25,36 @@ export default function ArticleView({ post, comments }) {
 
       {/* Header */}
       <header className="mb-12">
+        {/* Thumbnail */}
+        {post.thumbnail && (
+          <div className="rounded-2xl overflow-hidden mb-8"
+               style={{ height: "320px", border: "1px solid rgba(6,182,212,0.1)" }}>
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+        )}
+
+        {/* Category + tags row */}
+        <div className="flex flex-wrap items-center gap-2 mb-5">
+          {post.category && (
+            <span className="tag-pill">{post.category}</span>
+          )}
+          {post.tags?.map((tag) => (
+            <span key={tag}
+                  className="text-xs px-2.5 py-1 rounded-full"
+                  style={{
+                    background: "rgba(6,182,212,0.06)",
+                    border: "1px solid rgba(6,182,212,0.15)",
+                    color: "var(--text-muted)",
+                  }}>
+              #{tag}
+            </span>
+          ))}
+        </div>
+
         <div className="tag-pill inline-flex mb-6">Article</div>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-8"
             style={{ color: "var(--text-primary)" }}>
@@ -46,8 +76,8 @@ export default function ArticleView({ post, comments }) {
           <div>
             <p className="text-xs font-semibold" style={{ color: "var(--text-primary)" }}>NexEdge AI</p>
             <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-              {post.createdAt
-                ? new Date(post.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+              {(post.publishedDate || post.createdAt)
+                ? new Date(post.publishedDate || post.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
                 : "Published"}
             </p>
           </div>

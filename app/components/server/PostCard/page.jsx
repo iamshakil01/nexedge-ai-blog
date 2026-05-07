@@ -1,15 +1,52 @@
+"use client";
+
 export default function PostCard({ post, index }) {
+  const date = post.publishedDate
+    ? new Date(post.publishedDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+    : post.createdAt
+    ? new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+    : null;
+
   return (
     <article className="glass-card flex flex-col overflow-hidden group">
 
-      {/* Top accent bar */}
-      <div className="h-0.5 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-           style={{ background: "linear-gradient(90deg, #06b6d4, #2563eb, transparent)" }} />
+      {/* Thumbnail */}
+      {post.thumbnail && (
+        <div className="relative overflow-hidden" style={{ height: "180px" }}>
+          <img
+            src={post.thumbnail}
+            alt={post.title}
+            style={{
+              width: "100%", height: "100%", objectFit: "cover",
+              transition: "transform 0.4s ease",
+            }}
+            className="group-hover:scale-105"
+            onError={(e) => { e.currentTarget.parentElement.style.display = "none"; }}
+          />
+          {/* Category badge over image */}
+          {post.category && (
+            <span className="absolute top-3 left-3 tag-pill text-xs">
+              {post.category}
+            </span>
+          )}
+        </div>
+      )}
 
-      <div className="p-6 flex flex-col gap-4 flex-grow">
+      {/* Top accent bar (shown when no thumbnail) */}
+      {!post.thumbnail && (
+        <div className="h-0.5 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+             style={{ background: "linear-gradient(90deg, #06b6d4, #2563eb, transparent)" }} />
+      )}
 
+      <div className="p-6 flex flex-col gap-3 flex-grow">
+
+        {/* Category (no thumbnail) + post number */}
         <div className="flex items-center justify-between">
-          <span className="post-number">#{String(index + 1).padStart(2, "0")}</span>
+          {post.category && !post.thumbnail ? (
+            <span className="tag-pill">{post.category}</span>
+          ) : (
+            <span className="post-number">#{String(index + 1).padStart(2, "0")}</span>
+          )}
           <div className="w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                style={{ background: "rgba(6,182,212,0.15)" }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -20,29 +57,50 @@ export default function PostCard({ post, index }) {
           </div>
         </div>
 
-        <h2 className="text-lg font-bold leading-snug line-clamp-2 transition-colors duration-200"
-            style={{ color: "var(--text-primary)" }}
-            onMouseEnter={(e) => {}}
-        >
-          <span className="group-hover:[color:var(--accent-cyan)] transition-colors duration-200">
-            {post.title}
-          </span>
+        {/* Title */}
+        <h2 className="text-lg font-bold leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-cyan-400"
+            style={{ color: "var(--text-primary)" }}>
+          {post.title}
         </h2>
 
+        {/* Excerpt */}
         <p className="text-sm leading-relaxed line-clamp-3 flex-grow"
            style={{ color: "var(--text-secondary)" }}>
           {post.content.slice(0, 130)}...
         </p>
 
-        <a href={`/blog/${post.slug}`}
-           className="read-link mt-2 inline-flex items-center gap-2 text-sm font-semibold"
-           style={{ color: "var(--accent-cyan)" }}>
-          Read Article
-          <svg className="read-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5"
-                  strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+        {/* Tags */}
+        {post.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-1.5">
+            {post.tags.slice(0, 3).map((tag) => (
+              <span key={tag}
+                    className="text-xs px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "rgba(6,182,212,0.08)",
+                      border: "1px solid rgba(6,182,212,0.18)",
+                      color: "var(--text-muted)",
+                    }}>
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Date + Read link */}
+        <div className="flex items-center justify-between mt-1">
+          {date && (
+            <span className="text-xs" style={{ color: "var(--text-muted)" }}>{date}</span>
+          )}
+          <a href={`/blog/${post.slug}`}
+             className="read-link inline-flex items-center gap-2 text-sm font-semibold ml-auto"
+             style={{ color: "var(--accent-cyan)" }}>
+            Read
+            <svg className="read-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5"
+                    strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
 
       </div>
     </article>
