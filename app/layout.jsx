@@ -3,14 +3,30 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
 export const metadata = {
-  title: "NexEdge AI — Intelligent Future Solutions",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
+  title: {
+    default:  "NexEdge AI — Intelligent Future Solutions",
+    template: "%s | NexEdge AI",
+  },
   description: "Deep dives into artificial intelligence, global tech trends, and the tools shaping tomorrow.",
-  keywords: "AI, artificial intelligence, technology, machine learning, blog",
+  keywords:    ["AI", "artificial intelligence", "machine learning", "tech blog", "NexEdge AI"],
+  authors:     [{ name: "NexEdge AI" }],
+  icons: {
+    icon:       [{ url: "/favicon.png", type: "image/png", sizes: "208x208" }],
+    shortcut:   "/favicon.png",
+    apple:      "/favicon.png",
+  },
   openGraph: {
-    title: "NexEdge AI",
+    title:       "NexEdge AI — Intelligent Future Solutions",
+    description: "Deep dives into artificial intelligence, global tech trends, and the tools shaping tomorrow.",
+    type:        "website",
+    images:      [{ url: "/favicon.png", width: 208, height: 208, alt: "NexEdge AI" }],
+  },
+  twitter: {
+    card:        "summary",
+    title:       "NexEdge AI",
     description: "Intelligent Future Solutions — AI & Tech Blog",
-    type: "website",
-    images: [{ url: "/icon.png" }],
+    images:      ["/favicon.png"],
   },
 };
 
@@ -18,8 +34,6 @@ export default function RootLayout({ children }) {
   return (
     <html data-theme="dark" lang="en">
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
