@@ -1,7 +1,7 @@
 import PostCard from "../PostCard/page.jsx";
 
-export default function PostGrid({ posts }) {
-  if (posts.length === 0) {
+export default function PostGrid({ posts = [] }) {
+  if (!posts || posts.length === 0) {
     return (
       <div className="glass-card flex flex-col items-center justify-center py-32 gap-6 text-center">
         <div className="w-16 h-16 rounded-2xl flex items-center justify-center"

@@ -2,8 +2,10 @@ import ReviewSummary from "../ReviewSummary/page.jsx";
 import CommentList   from "../CommentList/page.jsx";
 import CommentForm   from "@/app/components/client/CommentForm/page.jsx";
 
-export default function ArticleView({ post, comments }) {
-  const readTime  = Math.max(1, Math.ceil(post.content.split(" ").length / 200));
+export default function ArticleView({ post, comments = [] }) {
+  if (!post) return null;
+
+  const readTime  = Math.max(1, Math.ceil((post.content || "").split(" ").length / 200));
   const avgRating = comments.length
     ? (comments.reduce((s, c) => s + c.rating, 0) / comments.length).toFixed(1)
     : null;

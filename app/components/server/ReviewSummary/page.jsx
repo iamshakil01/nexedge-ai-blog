@@ -1,7 +1,7 @@
 // SERVER COMPONENT — shows average rating + star breakdown bar chart
 
-export default function ReviewSummary({ comments }) {
-  if (comments.length === 0) return null;
+export default function ReviewSummary({ comments = [] }) {
+  if (!comments || comments.length === 0) return null;
 
   const total   = comments.length;
   const avg     = comments.reduce((s, c) => s + c.rating, 0) / total;

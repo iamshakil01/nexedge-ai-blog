@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyToken, COOKIE_NAME } from "@/lib/auth";
 
-export function middleware(req) {
+export function proxy(req) {
   const { pathname } = req.nextUrl;
 
   // Protect /admin routes
@@ -10,7 +10,6 @@ export function middleware(req) {
     const user  = token ? verifyToken(token) : null;
 
     if (!user) {
-      // Not logged in → redirect to login
       const url = req.nextUrl.clone();
       url.pathname = "/login";
       url.searchParams.set("from", pathname);
@@ -18,7 +17,6 @@ export function middleware(req) {
     }
 
     if (user.role !== "admin") {
-      // Logged in but not admin → redirect home
       const url = req.nextUrl.clone();
       url.pathname = "/";
       return NextResponse.redirect(url);

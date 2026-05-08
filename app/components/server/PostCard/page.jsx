@@ -1,6 +1,8 @@
 "use client";
 
-export default function PostCard({ post, index }) {
+export default function PostCard({ post, index = 0 }) {
+  if (!post) return null;
+
   const date = post.publishedDate
     ? new Date(post.publishedDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
     : post.createdAt

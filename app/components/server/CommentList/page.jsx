@@ -25,8 +25,8 @@ function StarRow({ rating }) {
   );
 }
 
-export default function CommentList({ comments }) {
-  if (comments.length === 0) {
+export default function CommentList({ comments = [] }) {
+  if (!comments || comments.length === 0) {
     return (
       <div
         className="flex flex-col items-center py-14 gap-3 rounded-2xl"
