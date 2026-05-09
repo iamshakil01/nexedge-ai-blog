@@ -10,8 +10,11 @@ export default function PostCard({ post, index = 0 }) {
     : null;
 
   return (
-    <article className="glass-card flex flex-col overflow-hidden group">
-
+    <a
+      href={`/blog/${post.slug}`}
+      className="glass-card flex flex-col overflow-hidden group cursor-pointer"
+      style={{ textDecoration: "none" }}
+    >
       {/* Thumbnail */}
       {post.thumbnail && (
         <div className="relative overflow-hidden" style={{ height: "180px" }}>
@@ -25,7 +28,6 @@ export default function PostCard({ post, index = 0 }) {
             className="group-hover:scale-105"
             onError={(e) => { e.currentTarget.parentElement.style.display = "none"; }}
           />
-          {/* Category badge over image */}
           {post.category && (
             <span className="absolute top-3 left-3 tag-pill text-xs">
               {post.category}
@@ -34,7 +36,7 @@ export default function PostCard({ post, index = 0 }) {
         </div>
       )}
 
-      {/* Top accent bar (shown when no thumbnail) */}
+      {/* Top accent bar — no thumbnail */}
       {!post.thumbnail && (
         <div className="h-0.5 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
              style={{ background: "linear-gradient(90deg, #06b6d4, #2563eb, transparent)" }} />
@@ -42,13 +44,14 @@ export default function PostCard({ post, index = 0 }) {
 
       <div className="p-6 flex flex-col gap-3 flex-grow">
 
-        {/* Category (no thumbnail) + post number */}
+        {/* Category + number */}
         <div className="flex items-center justify-between">
           {post.category && !post.thumbnail ? (
             <span className="tag-pill">{post.category}</span>
           ) : (
             <span className="post-number">#{String(index + 1).padStart(2, "0")}</span>
           )}
+          {/* Arrow icon — appears on hover */}
           <div className="w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                style={{ background: "rgba(6,182,212,0.15)" }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -88,23 +91,22 @@ export default function PostCard({ post, index = 0 }) {
           </div>
         )}
 
-        {/* Date + Read link */}
+        {/* Date + Read indicator */}
         <div className="flex items-center justify-between mt-1">
           {date && (
             <span className="text-xs" style={{ color: "var(--text-muted)" }}>{date}</span>
           )}
-          <a href={`/blog/${post.slug}`}
-             className="read-link inline-flex items-center gap-2 text-sm font-semibold ml-auto"
-             style={{ color: "var(--accent-cyan)" }}>
+          <span className="read-link inline-flex items-center gap-1.5 text-sm font-semibold ml-auto"
+                style={{ color: "var(--accent-cyan)" }}>
             Read
             <svg className="read-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5"
                     strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </span>
         </div>
 
       </div>
-    </article>
+    </a>
   );
 }

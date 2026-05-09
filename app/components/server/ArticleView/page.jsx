@@ -1,6 +1,9 @@
-import ReviewSummary from "../ReviewSummary/page.jsx";
-import CommentList   from "../CommentList/page.jsx";
-import CommentForm   from "@/app/components/client/CommentForm/page.jsx";
+import ReviewSummary    from "../ReviewSummary/page.jsx";
+import CommentList      from "../CommentList/page.jsx";
+import CommentForm      from "@/app/components/client/CommentForm/page.jsx";
+import ArticleActions   from "@/app/components/client/ArticleActions/page.jsx";
+import ArticleContent   from "../ArticleContent/page.jsx";
+import CommentSection   from "../CommentSection/page.jsx";
 
 export default function ArticleView({ post, comments = [] }) {
   if (!post) return null;
@@ -12,6 +15,9 @@ export default function ArticleView({ post, comments = [] }) {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
+
+      {/* Admin actions — edit / delete (visible to admin only) */}
+      <ArticleActions slug={post.slug} />
 
       {/* Back */}
       <a href="/blog"
@@ -110,11 +116,11 @@ export default function ArticleView({ post, comments = [] }) {
       </header>
 
       <div className="shimmer-line mb-12"/>
-      <article className="article-body whitespace-pre-wrap">{post.content}</article>
+      <ArticleContent content={post.content} />
       <div className="shimmer-line mt-16 mb-12"/>
 
       {/* Footer row */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-20">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 mb-4">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                style={{ background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.18)" }}>
@@ -135,25 +141,8 @@ export default function ArticleView({ post, comments = [] }) {
         </a>
       </div>
 
-      {/* Reviews */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-black" style={{ color: "var(--text-primary)" }}>
-          Reviews
-          {comments.length > 0 && (
-            <span className="ml-3 text-base font-bold" style={{ color: "var(--accent-cyan)" }}>
-              ({comments.length})
-            </span>
-          )}
-        </h2>
-        <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-          Share your thoughts and help others decide.
-        </p>
-      </div>
-
-      {comments.length > 0 && <div className="mb-8"><ReviewSummary comments={comments} /></div>}
-      <div className="mb-10"><CommentList comments={comments} /></div>
-      <div className="shimmer-line mb-10"/>
-      <CommentForm slug={post.slug} />
+      {/* ── Comment Section — fixed design for all articles ── */}
+      <CommentSection slug={post.slug} comments={comments} />
 
     </div>
   );

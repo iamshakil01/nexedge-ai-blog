@@ -198,6 +198,12 @@ body::before {
 }
 .article-body p { margin-bottom: 1.5rem; }
 
+/* ── Article content (smart parser) ──────────────────────────── */
+.article-content {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
 /* ── Read link arrow ──────────────────────────────────────────── */
 .read-link:hover { gap: 10px; }
 .read-link .read-arrow { transition: transform 0.2s ease; }
