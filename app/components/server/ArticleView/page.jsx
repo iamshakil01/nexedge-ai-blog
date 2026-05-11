@@ -4,6 +4,7 @@ import CommentForm      from "@/app/components/client/CommentForm/page.jsx";
 import ArticleActions   from "@/app/components/client/ArticleActions/page.jsx";
 import ArticleContent   from "../ArticleContent/page.jsx";
 import CommentSection   from "../CommentSection/page.jsx";
+import Script from "next/script";
 
 export default function ArticleView({ post, comments = [] }) {
   if (!post) return null;
@@ -13,8 +14,37 @@ export default function ArticleView({ post, comments = [] }) {
     ? (comments.reduce((s, c) => s + c.rating, 0) / comments.length).toFixed(1)
     : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+    "image": post.thumbnail || "/favicon.png",
+    "datePublished": post.publishedAt,
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SheraShop",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${process.env.NEXT_PUBLIC_BASE_URL}/favicon.png`,
+      },
+    },
+  };
+
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <>
+      <Script
+        id="article-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      <div className="max-w-3xl mx-auto px-6 py-16">
 
       {/* Admin actions — edit / delete (visible to admin only) */}
       <ArticleActions slug={post.slug} />
@@ -145,5 +175,6 @@ export default function ArticleView({ post, comments = [] }) {
       <CommentSection slug={post.slug} comments={comments} />
 
     </div>
+    </>
   );
 }

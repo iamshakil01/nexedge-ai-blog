@@ -18,6 +18,24 @@ async function getPosts() {
   }
 }
 
+export const metadata = {
+  title: "Home",
+  description: "Welcome to SheraShop, your ultimate shopping destination. Explore the latest deals, product reviews, and lifestyle tips.",
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_BASE_URL,
+  },
+  openGraph: {
+    title: "SheraShop — Home",
+    description: "Welcome to SheraShop, your ultimate shopping destination. Explore the latest deals, product reviews, and lifestyle tips.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "SheraShop — Home",
+    description: "Welcome to SheraShop, your ultimate shopping destination.",
+  },
+};
+
 export default async function HomePage() {
   const posts = await getPosts();
 

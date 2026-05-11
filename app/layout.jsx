@@ -5,27 +5,27 @@ import Footer from "./components/Footer.jsx";
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   title: {
-    default:  "NexEdge AI — Intelligent Future Solutions",
-    template: "%s | NexEdge AI",
+    default:  "SheraShop — Your Ultimate Shopping Destination",
+    template: "%s | SheraShop",
   },
-  description: "Deep dives into artificial intelligence, global tech trends, and the tools shaping tomorrow.",
-  keywords:    ["AI", "artificial intelligence", "machine learning", "tech blog", "NexEdge AI"],
-  authors:     [{ name: "NexEdge AI" }],
+  description: "Discover the best products, deals, and shopping tips at SheraShop. Your go-to blog for all things shopping and lifestyle.",
+  keywords:    ["shopping", "deals", "products", "lifestyle", "blog", "SheraShop"],
+  authors:     [{ name: "SheraShop Team" }],
   icons: {
     icon:       [{ url: "/favicon.png", type: "image/png", sizes: "208x208" }],
     shortcut:   "/favicon.png",
     apple:      "/favicon.png",
   },
   openGraph: {
-    title:       "NexEdge AI — Intelligent Future Solutions",
-    description: "Deep dives into artificial intelligence, global tech trends, and the tools shaping tomorrow.",
+    title:       "SheraShop — Your Ultimate Shopping Destination",
+    description: "Discover the best products, deals, and shopping tips at SheraShop. Your go-to blog for all things shopping and lifestyle.",
     type:        "website",
-    images:      [{ url: "/favicon.png", width: 208, height: 208, alt: "NexEdge AI" }],
+    images:      [{ url: "/favicon.png", width: 208, height: 208, alt: "SheraShop" }],
   },
   twitter: {
     card:        "summary",
-    title:       "NexEdge AI",
-    description: "Intelligent Future Solutions — AI & Tech Blog",
+    title:       "SheraShop",
+    description: "Your Ultimate Shopping Destination — Deals & Lifestyle Blog",
     images:      ["/favicon.png"],
   },
 };
