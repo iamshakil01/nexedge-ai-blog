@@ -11,19 +11,19 @@ async function getPosts() {
 
 export const metadata = {
   title: "Blog",
-  description: "Explore all articles and posts on SheraShop. Stay updated with the latest shopping tips, product reviews, and lifestyle content.",
+  description: "Explore all AI articles and posts on NexEdge-Ai. Stay updated with the latest machine learning, data science, and technology news.",
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
   },
   openGraph: {
-    title: "SheraShop Blog",
-    description: "Explore all articles and posts on SheraShop.",
+    title: "NexEdge-Ai Blog",
+    description: "Explore all AI articles and posts on NexEdge-Ai.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "SheraShop Blog",
-    description: "Stay updated with the latest shopping tips and product reviews.",
+    title: "NexEdge-Ai Blog",
+    description: "Stay updated with the latest AI insights and technology news.",
   },
 };
 

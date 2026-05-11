@@ -27,7 +27,7 @@ export default function ArticleView({ post, comments = [] }) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "SheraShop",
+      "name": "NexEdge-Ai",
       "logo": {
         "@type": "ImageObject",
         "url": `${process.env.NEXT_PUBLIC_BASE_URL}/favicon.png`,

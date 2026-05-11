@@ -20,19 +20,19 @@ async function getPosts() {
 
 export const metadata = {
   title: "Home",
-  description: "Welcome to SheraShop, your ultimate shopping destination. Explore the latest deals, product reviews, and lifestyle tips.",
+  description: "Welcome to NexEdge-Ai, your destination for AI insights, product reviews, and tech trends.",
   alternates: {
     canonical: process.env.NEXT_PUBLIC_BASE_URL,
   },
   openGraph: {
-    title: "SheraShop — Home",
-    description: "Welcome to SheraShop, your ultimate shopping destination. Explore the latest deals, product reviews, and lifestyle tips.",
+    title: "NexEdge-Ai — Home",
+    description: "Welcome to NexEdge-Ai, your destination for AI insights, product reviews, and tech trends.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "SheraShop — Home",
-    description: "Welcome to SheraShop, your ultimate shopping destination.",
+    title: "NexEdge-Ai — Home",
+    description: "Welcome to NexEdge-Ai, your destination for AI insights and tech trends.",
   },
 };
 
