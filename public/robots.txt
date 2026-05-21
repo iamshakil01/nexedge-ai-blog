@@ -1,4 +1,13 @@
+# robots.txt for NexEdge-Ai
+# This file is kept for backward compatibility
+# The dynamic robots.txt is served from app/robots.ts
+
 User-agent: *
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+# Dynamic robots.txt location
+Sitemap: https://nexedge-ai.vercel.app/sitemap.xml
+Sitemap: https://nexedge-ai.vercel.app/feed.xml
+
+# Note: For detailed crawl directives, see the dynamic robots.txt
+# served at /robots.txt which provides per-user-agent rules

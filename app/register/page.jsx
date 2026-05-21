@@ -1,4 +1,4 @@
-import AuthForm from "@/app/components/client/AuthForm/page.jsx";
+import AuthForm from "@/components/client/AuthForm/page.jsx";
 
 export const metadata = { title: "Register — NexEdge AI" };
 

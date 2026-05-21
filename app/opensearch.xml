@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>NexEdge-Ai</ShortName>
+  <Description>Search NexEdge-Ai blog for AI and technology articles</Description>
+  <Url type="text/html" template="https://nexedge-ai.vercel.app/search?q={searchTerms}"/>
+  <Language>en-us</Language>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Image type="image/png" width="16" height="16">https://nexedge-ai.vercel.app/favicon.png</Image>
+  <Image type="image/png" width="32" height="32">https://nexedge-ai.vercel.app/favicon.png</Image>
+  <Image type="image/png" width="64" height="64">https://nexedge-ai.vercel.app/favicon.png</Image>
+  <Contact>hello@nexedge.ai</Contact>
+  <Tags>AI technology blog machine learning</Tags>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+</OpenSearchDescription>
